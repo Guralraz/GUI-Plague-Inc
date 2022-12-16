@@ -14,7 +14,9 @@ public class GlobalGameState {
     private Germany germany = Germany.getInstance();
     private Greece greece = Greece.getInstance();
     private Iberia iberia = Iberia.getInstance();
-    private IrelandAndUK irelandAndUK = IrelandAndUK.getInstance();
+    private Ireland ireland = Ireland.getInstance();
+    private UK uk = UK.getInstance();
+    private Denmark denmark = Denmark.getInstance();
     private NorthernEurope northernEurope = NorthernEurope.getInstance();
     private Poland poland = Poland.getInstance();
     private SouthEasternEurope southEasternEurope = SouthEasternEurope.getInstance();
@@ -36,64 +38,72 @@ public class GlobalGameState {
     public synchronized void addOnePoint(Region region) {
         switch (region.getClass().getSimpleName()) {
             case ("France") -> {
-                this.france.addOnePoint();
-                this.globalInfections += this.france.getPointsFrance();
+                virus.infect(france);
+                this.globalInfections += this.france.getInfections();
             }
             case ("Greece") -> {
-                this.greece.addOnePoint();
-                this.globalInfections += this.greece.getPointsGreece();
+                virus.infect(greece);
+                this.globalInfections += this.greece.getInfections();
             }
             case ("Iberia") -> {
-                this.iberia.addOnePoint();
-                this.globalInfections += this.iberia.getPointsIberia();
+                virus.infect(ireland);
+                this.globalInfections += this.iberia.getInfections();
             }
             case ("Poland") -> {
-                this.poland.addOnePoint();
-                this.globalInfections += this.poland.getPointsPoland();
+                virus.infect(poland);
+                this.globalInfections += this.poland.getInfections();
             }
             case ("Balkans") -> {
                 virus.infect(balkans);
                 this.globalInfections += this.balkans.getInfections();
             }
             case ("Baltics") -> {
-                this.baltics.addOnePoint();
-                this.globalInfections += this.baltics.getPoints();
+                virus.infect(baltics);
+                this.globalInfections += this.baltics.getInfections();
             }
             case ("Germany") -> {
-                this.germany.addOnePoint();
-                this.globalInfections += this.germany.getPointsGermany();
+                virus.infect(germany);
+                this.globalInfections += this.germany.getInfections();
             }
             case ("Turkiye") -> {
-                this.turkiye.addOnePoint();
-                this.globalInfections += this.turkiye.getPointsTurkiye();
+                virus.infect(turkiye);
+                this.globalInfections += this.turkiye.getInfections();
             }
             case ("Switzerland") -> {
-                this.switzerland.addOnePoint();
-                this.globalInfections += this.switzerland.getPointsSwitzerland();
+                virus.infect(switzerland);
+                this.globalInfections += this.switzerland.getInfections();
             }
             case ("CentralEurope") -> {
-                this.centralEurope.addOnePoint();
-                this.globalInfections += this.centralEurope.getPointsCentralEurope();
+                virus.infect(centralEurope);
+                this.globalInfections += this.centralEurope.getInfections();
             }
             case ("EasternEurope") -> {
-                this.easternEurope.addOnePoint();
-                this.globalInfections += this.easternEurope.getPointsEasternEurope();
+                virus.infect(easternEurope);
+                this.globalInfections += this.easternEurope.getInfections();
             }
-            case ("IrelandAndUK") -> {
-                this.irelandAndUK.addOnePoint();
-                this.globalInfections += this.irelandAndUK.getPointsIrelandUK();
+            case ("Ireland") -> {
+                virus.infect(ireland);
+                this.globalInfections += this.ireland.getInfections();
+            }
+            case ("UK") -> {
+                virus.infect(uk);
+                this.globalInfections += this.uk.getInfections();
+            }
+            case ("Denmark") -> {
+                this.globalInfections += this.denmark.getInfections();
+
             }
             case ("WesternEurope") -> {
-                this.westernEurope.addOnePoint();
-                this.globalInfections += this.westernEurope.getPointsWesternEurope();
+                virus.infect(westernEurope);
+                this.globalInfections += this.westernEurope.getInfections();
             }
             case ("NorthernEurope") -> {
-                this.northernEurope.addOnePoint();
-                this.globalInfections += this.northernEurope.getPointsNorthernEurope();
+                virus.infect(northernEurope);
+                this.globalInfections += this.northernEurope.getInfections();
             }
             case ("SouthEasternEurope") -> {
-                this.southEasternEurope.addOnePoint();
-                this.globalInfections += this.southEasternEurope.getPointsSouthEasternEurope();
+                virus.infect(southEasternEurope);
+                this.globalInfections += this.southEasternEurope.getInfections();
             }
             default -> throw new IllegalStateException("Unexpected value: " + region);
         }

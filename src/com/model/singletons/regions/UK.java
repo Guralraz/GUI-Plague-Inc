@@ -7,16 +7,16 @@ import com.model.enums.WealthLevel;
 import com.model.prototype.PrototypeRegion;
 import com.model.services.Country;
 
-public class France extends PrototypeRegion {
-    private static volatile France INSTANCE;
+public class UK extends PrototypeRegion {
+    private static volatile UK INSTANCE;
 
-    private France() {
+    private UK() {
         super();
         super.setClimate(Climate.ARID);
         super.setHealthCareLevel(HealthCareLevel.HIGH);
         super.setUrbanizationLevel(UrbanizationLevel.RURAL);
         super.setWealthLevel(WealthLevel.RICH);
-        super.setPopulation(34992814);
+        super.setPopulation(67886011);
     }
 
     @Override
@@ -69,11 +69,11 @@ public class France extends PrototypeRegion {
         super.startInfection();
     }
 
-    public static France getInstance() {
+    public static UK getInstance() {
         if (INSTANCE == null) {
-            synchronized (France.class) {
+            synchronized (UK.class) {
                 if (INSTANCE == null) {
-                    INSTANCE = new France();
+                    INSTANCE = new UK();
                 }
             }
         }

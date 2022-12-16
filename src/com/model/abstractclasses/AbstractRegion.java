@@ -85,6 +85,8 @@ public abstract class AbstractRegion implements Region {
     }
 
     public void startInfection() {
-        this.infected = true;
+        if (!infected) {
+            this.infected = true;
+        }
     }
 }

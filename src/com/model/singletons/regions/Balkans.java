@@ -5,9 +5,10 @@ import com.model.enums.Climate;
 import com.model.enums.HealthCareLevel;
 import com.model.enums.UrbanizationLevel;
 import com.model.enums.WealthLevel;
+import com.model.prototype.PrototypeRegion;
 import com.model.services.Country;
 
-public class Balkans extends AbstractRegion {
+public class Balkans extends PrototypeRegion {
     private static volatile Balkans INSTANCE;
 
     private Balkans() {
@@ -16,7 +17,7 @@ public class Balkans extends AbstractRegion {
         super.setHealthCareLevel(HealthCareLevel.LOW);
         super.setUrbanizationLevel(UrbanizationLevel.RURAL);
         super.setWealthLevel(WealthLevel.POOR);
-        super.setPopulation(26000000);
+        super.setPopulation(20074496);
     }
 
     @Override
@@ -47,8 +48,14 @@ public class Balkans extends AbstractRegion {
         super.setCountry(country);
     }
 
-    public synchronized void setInfections(int numberOfInfections) {
-        super.setInfections(numberOfInfections);
+    @Override
+    public synchronized void setInfections(Integer infections) {
+        super.setInfections(infections);
+    }
+
+    @Override
+    public void startInfection() {
+        super.startInfection();
     }
 
     public static Balkans getInstance() {

@@ -1,22 +1,16 @@
-package com.model.singletons.regions;
+package com.model.prototype;
 
+import com.model.abstractclasses.AbstractRegion;
 import com.model.enums.Climate;
 import com.model.enums.HealthCareLevel;
 import com.model.enums.UrbanizationLevel;
 import com.model.enums.WealthLevel;
-import com.model.prototype.PrototypeRegion;
 import com.model.services.Country;
 
-public class France extends PrototypeRegion {
-    private static volatile France INSTANCE;
+public class PrototypeRegion extends AbstractRegion {
 
-    private France() {
+    public PrototypeRegion() {
         super();
-        super.setClimate(Climate.ARID);
-        super.setHealthCareLevel(HealthCareLevel.HIGH);
-        super.setUrbanizationLevel(UrbanizationLevel.RURAL);
-        super.setWealthLevel(WealthLevel.RICH);
-        super.setPopulation(34992814);
     }
 
     @Override
@@ -55,8 +49,33 @@ public class France extends PrototypeRegion {
     }
 
     @Override
-    public synchronized void setInfections(Integer infections) {
+    public void setHealthCareLevel(HealthCareLevel healthCareLevel) {
+        super.setHealthCareLevel(healthCareLevel);
+    }
+
+    @Override
+    public void setClimate(Climate climate) {
+        super.setClimate(climate);
+    }
+
+    @Override
+    public void setUrbanizationLevel(UrbanizationLevel urbanizationLevel) {
+        super.setUrbanizationLevel(urbanizationLevel);
+    }
+
+    @Override
+    public void setWealthLevel(WealthLevel wealthLevel) {
+        super.setWealthLevel(wealthLevel);
+    }
+
+    @Override
+    public void setInfections(Integer infections) {
         super.setInfections(infections);
+    }
+
+    @Override
+    public void setPopulation(Integer population) {
+        super.setPopulation(population);
     }
 
     @Override
@@ -67,16 +86,5 @@ public class France extends PrototypeRegion {
     @Override
     public void startInfection() {
         super.startInfection();
-    }
-
-    public static France getInstance() {
-        if (INSTANCE == null) {
-            synchronized (France.class) {
-                if (INSTANCE == null) {
-                    INSTANCE = new France();
-                }
-            }
-        }
-        return INSTANCE;
     }
 }

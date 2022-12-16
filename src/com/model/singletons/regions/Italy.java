@@ -7,10 +7,10 @@ import com.model.enums.WealthLevel;
 import com.model.prototype.PrototypeRegion;
 import com.model.services.Country;
 
-public class France extends PrototypeRegion {
-    private static volatile France INSTANCE;
+public class Italy extends PrototypeRegion {
+    private static volatile Italy INSTANCE;
 
-    private France() {
+    private Italy() {
         super();
         super.setClimate(Climate.ARID);
         super.setHealthCareLevel(HealthCareLevel.HIGH);
@@ -69,11 +69,11 @@ public class France extends PrototypeRegion {
         super.startInfection();
     }
 
-    public static France getInstance() {
+    public static Italy getInstance() {
         if (INSTANCE == null) {
-            synchronized (France.class) {
+            synchronized (Italy.class) {
                 if (INSTANCE == null) {
-                    INSTANCE = new France();
+                    INSTANCE = new Italy();
                 }
             }
         }

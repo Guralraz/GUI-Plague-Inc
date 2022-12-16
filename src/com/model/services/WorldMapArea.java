@@ -1,7 +1,7 @@
 package com.model.services;
 
 import com.model.abstractclasses.AbstractRegion;
-import com.model.singletons.regions.Balkans;
+import com.model.singletons.regions.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -120,6 +120,45 @@ public class WorldMapArea {
                 gp.closePath();
                 regions.add(new Country(number, new Area(gp)));
                 //TODO populacja Country country w AbstractRegion
+                if (number == 3) {
+                    Iceland.getInstance().setCountry(regions.get(3));
+                } else if (number == 4) {
+                    NorthernEurope.getInstance().setCountry(regions.get(4));
+                } else if (number == 5) {
+                    Denmark.getInstance().setCountry(regions.get(5));
+                } else if (number == 6) {
+                    Baltics.getInstance().setCountry(regions.get(6));
+                } else if (number == 8) {
+                    Ireland.getInstance().setCountry(regions.get(8));
+                } else if (number == 9) {
+                    UK.getInstance().setCountry(regions.get(9));
+                } else if (number == 10) {
+                    Poland.getInstance().setCountry(regions.get(10));
+                } else if (number == 11) {
+                    WesternEurope.getInstance().setCountry(regions.get(11));
+                } else if (number == 14) {
+                    Germany.getInstance().setCountry(regions.get(14));
+                } else if (number == 15) {
+                    EasternEurope.getInstance().setCountry(regions.get(15));
+                } else if (number == 16) {
+                    CentralEurope.getInstance().setCountry(regions.get(16));
+                } else if (number == 17) {
+                    Switzerland.getInstance().setCountry(regions.get(17));
+                } else if (number == 18) {
+                    France.getInstance().setCountry(regions.get(18));
+                } else if (number == 19) {
+                    SouthEasternEurope.getInstance().setCountry(regions.get(19));
+                } else if (number == 20) {
+                    Balkans.getInstance().setCountry(regions.get(20));
+                } else if (number == 22) {
+                    Turkiye.getInstance().setCountry(regions.get(22));
+                } else if (number == 24) {
+                    Greece.getInstance().setCountry(regions.get(24));
+                } else if (number == 25) {
+                    Iberia.getInstance().setCountry(regions.get(25));
+                } else if (number == 26) {
+                    Italy.getInstance().setCountry(regions.get(26));
+                }
 
 //                numbers.add(number);
                 number++;
@@ -143,13 +182,15 @@ public class WorldMapArea {
         @Override
         public void mouseMoved(MouseEvent e) {
             refresh();
+            System.out.println(e.getSource().toString());
         }
     }
 
     class MouseClickListener implements MouseListener {
         @Override
         public void mouseClicked(MouseEvent e) {
-          //  onClick();
+            //  onClick();
+            e.getSource();
         }
 
         @Override
@@ -171,6 +212,7 @@ public class WorldMapArea {
         public void mouseExited(MouseEvent e) {
 
         }
+
     }
 
     public static boolean isIncluded(Color target, Color pixel, int tolerance) {
