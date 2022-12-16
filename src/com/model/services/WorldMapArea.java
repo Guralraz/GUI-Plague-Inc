@@ -2,6 +2,7 @@ package com.model.services;
 
 import com.model.abstractclasses.AbstractRegion;
 import com.model.singletons.regions.*;
+import com.view.labels.CountryLabel;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -27,7 +28,7 @@ public class WorldMapArea {
 
     //TODO create a custom JLabel extending class with a Country field
     private JComponent ui = null;
-    JLabel output = new JLabel();
+    CountryLabel output = new CountryLabel();
     public static final int SIZE = 750;
     BufferedImage image;
     Area area;
@@ -95,6 +96,7 @@ public class WorldMapArea {
     //    private static Set<Integer> numbers = new HashSet<>();
     private static Map<Country, AbstractRegion> countriesMap = new HashMap<>();
     private static ArrayList<Country> regions = new ArrayList<>();
+    private static ArrayList<CountryLabel> labels = new ArrayList<>();
 
 
     public static ArrayList<Country> separateShapeIntoRegions(Shape shape) {
@@ -124,42 +126,99 @@ public class WorldMapArea {
                 //TODO populacja Country country w AbstractRegion
                 if (number == 3) {
                     Iceland.getInstance().setCountry(regions.get(3));
+                    labels.add(new CountryLabel());
+                    labels.get(0).setPrototypeRegion(Iceland.getInstance());
+                    labels.get(0).setCountry(regions.get(3));
                 } else if (number == 4) {
                     NorthernEurope.getInstance().setCountry(regions.get(4));
+                    labels.add(new CountryLabel());
+                    labels.get(1).setPrototypeRegion(NorthernEurope.getInstance());
+                    labels.get(1).setCountry(regions.get(4));
                 } else if (number == 5) {
                     Denmark.getInstance().setCountry(regions.get(5));
+                    labels.add(new CountryLabel());
+                    labels.get(2).setPrototypeRegion(Denmark.getInstance());
+                    labels.get(2).setCountry(regions.get(5));
                 } else if (number == 6) {
                     Baltics.getInstance().setCountry(regions.get(6));
+                    labels.add(new CountryLabel());
+                    labels.get(3).setPrototypeRegion(Baltics.getInstance());
+                    labels.get(3).setCountry(regions.get(6));
                 } else if (number == 8) {
                     Ireland.getInstance().setCountry(regions.get(8));
+                    labels.add(new CountryLabel());
+                    labels.get(4).setPrototypeRegion(Ireland.getInstance());
+                    labels.get(4).setCountry(regions.get(8));
                 } else if (number == 9) {
                     UK.getInstance().setCountry(regions.get(9));
+                    labels.add(new CountryLabel());
+                    labels.get(5).setPrototypeRegion(UK.getInstance());
+                    labels.get(5).setCountry(regions.get(9));
                 } else if (number == 10) {
                     Poland.getInstance().setCountry(regions.get(10));
+                    labels.add(new CountryLabel());
+                    labels.get(6).setPrototypeRegion(Poland.getInstance());
+                    labels.get(6).setCountry(regions.get(10));
                 } else if (number == 11) {
                     WesternEurope.getInstance().setCountry(regions.get(11));
+                    labels.add(new CountryLabel());
+                    labels.get(7).setPrototypeRegion(WesternEurope.getInstance());
+                    labels.get(7).setCountry(regions.get(11));
                 } else if (number == 14) {
                     Germany.getInstance().setCountry(regions.get(14));
+                    labels.add(new CountryLabel());
+                    labels.get(8).setPrototypeRegion(Germany.getInstance());
+                    labels.get(8).setCountry(regions.get(14));
                 } else if (number == 15) {
                     EasternEurope.getInstance().setCountry(regions.get(15));
+                    labels.add(new CountryLabel());
+                    labels.get(9).setPrototypeRegion(EasternEurope.getInstance());
+                    labels.get(9).setCountry(regions.get(15));
                 } else if (number == 16) {
                     CentralEurope.getInstance().setCountry(regions.get(16));
+                    labels.add(new CountryLabel());
+                    labels.get(10).setPrototypeRegion(CentralEurope.getInstance());
+                    labels.get(10).setCountry(regions.get(16));
                 } else if (number == 17) {
                     Switzerland.getInstance().setCountry(regions.get(17));
+                    labels.add(new CountryLabel());
+                    labels.get(11).setPrototypeRegion(Switzerland.getInstance());
+                    labels.get(11).setCountry(regions.get(17));
                 } else if (number == 18) {
                     France.getInstance().setCountry(regions.get(18));
+                    labels.add(new CountryLabel());
+                    labels.get(12).setPrototypeRegion(France.getInstance());
+                    labels.get(12).setCountry(regions.get(18));
                 } else if (number == 19) {
                     SouthEasternEurope.getInstance().setCountry(regions.get(19));
+                    labels.add(new CountryLabel());
+                    labels.get(13).setPrototypeRegion(SouthEasternEurope.getInstance());
+                    labels.get(13).setCountry(regions.get(19));
                 } else if (number == 20) {
                     Balkans.getInstance().setCountry(regions.get(20));
+                    labels.add(new CountryLabel());
+                    labels.get(14).setPrototypeRegion(Balkans.getInstance());
+                    labels.get(14).setCountry(regions.get(20));
                 } else if (number == 22) {
                     Turkiye.getInstance().setCountry(regions.get(22));
+                    labels.add(new CountryLabel());
+                    labels.get(15).setPrototypeRegion(Turkiye.getInstance());
+                    labels.get(15).setCountry(regions.get(22));
                 } else if (number == 24) {
                     Greece.getInstance().setCountry(regions.get(24));
+                    labels.add(new CountryLabel());
+                    labels.get(16).setPrototypeRegion(Greece.getInstance());
+                    labels.get(16).setCountry(regions.get(24));
                 } else if (number == 25) {
                     Iberia.getInstance().setCountry(regions.get(25));
+                    labels.add(new CountryLabel());
+                    labels.get(17).setPrototypeRegion(Iberia.getInstance());
+                    labels.get(17).setCountry(regions.get(25));
                 } else if (number == 26) {
                     Italy.getInstance().setCountry(regions.get(26));
+                    labels.add(new CountryLabel());
+                    labels.get(18).setPrototypeRegion(Italy.getInstance());
+                    labels.get(18).setCountry(regions.get(26));
                 }
 
 //                numbers.add(number);
@@ -191,8 +250,25 @@ public class WorldMapArea {
     class MouseClickListener implements MouseListener {
         @Override
         public void mouseClicked(MouseEvent e) {
-            //  onClick();
-            System.out.println(e.getSource());
+//            CountryLabel chuj = labels.stream().filter(e1 -> e.getSource().equals(e1)).findFirst().orElse(null);
+//            Point point = new Point(e.getX(), e.getY());
+            Point p = MouseInfo.getPointerInfo().getLocation();
+            Point p1 = output.getLocationOnScreen();
+            int x = p.x - p1.x;
+            int y = p.y - p1.y;
+            Point pointOnImage = new Point(x, y);
+            for (CountryLabel label : labels) {
+//                if (((CountryLabel) e.getSource()).getBorder() == (label.getBorder()) && ((CountryLabel) e.getSource()).) {
+//                    System.out.println(label.getPrototypeRegion());
+//                }
+                if (label.contains(pointOnImage)) {
+                    System.out.println(label.getPrototypeRegion());
+                }
+            }
+
+//            System.out.println(((CountryLabel) e.getSource()).getPrototypeRegion().getCountry());
+            onClick();
+//            System.out.println(e.getSource());
         }
 
         @Override
@@ -231,9 +307,13 @@ public class WorldMapArea {
 
     private void refresh() {
         output.setIcon(new ImageIcon(getImage()));
+//        for (Country country : regions) {
+//            if ()
+//        }
+//        output.setPrototypeRegion();
     }
 
-    private void onClick(AbstractRegion abstractRegion) {
+    private void onClick() {
         try {
             Point p = MouseInfo.getPointerInfo().getLocation();
             Point p1 = output.getLocationOnScreen();
@@ -241,7 +321,7 @@ public class WorldMapArea {
             int y = p.y - p1.y;
             Point pointOnImage = new Point(x, y);
             for (Country country : shapeList) {
-                if (abstractRegion.getCountry().getShape().contains(pointOnImage)) {
+                if (output.getCountry().getShape().contains(pointOnImage)) {
                     System.out.println(MessageFormat.format("Country clicked {0}", country.getNumber()));
                     System.out.println(MessageFormat.format("Country clicked {0}", country.getShape()));
                     if (country.getNumber() == 1) {
