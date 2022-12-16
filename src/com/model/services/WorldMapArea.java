@@ -25,6 +25,7 @@ import java.util.List;
  */
 public class WorldMapArea {
 
+    //TODO create a custom JLabel extending class with a Country field
     private JComponent ui = null;
     JLabel output = new JLabel();
     public static final int SIZE = 750;
@@ -52,6 +53,7 @@ public class WorldMapArea {
         ui.setBorder(new EmptyBorder(4, 4, 4, 4));
 
         output.addMouseMotionListener(new MousePositionListener());
+        output.addMouseListener(new MouseClickListener());
 
         ui.add(output);
 
@@ -190,7 +192,7 @@ public class WorldMapArea {
         @Override
         public void mouseClicked(MouseEvent e) {
             //  onClick();
-            e.getSource();
+            System.out.println(e.getSource());
         }
 
         @Override
